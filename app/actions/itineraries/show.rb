@@ -13,7 +13,8 @@ module Mateoplanner
 
           if itinerary.nil?
             response.status = 404
-            response.body = 'Itinerary not found'
+            response.headers['content-type'] = 'text/html'
+            response.body = ['<h1>Itinerary not found</h1>']
             return
           end
 
@@ -23,8 +24,8 @@ module Mateoplanner
           days = (Date.parse(itinerary[:end_date].to_s) - Date.parse(itinerary[:start_date].to_s)).to_i + 1
           weather = weather_service.get_forecast(city, days)
 
-          response.format = :html
-          response.body = render_itinerary(itinerary, weather)
+          response.headers['content-type'] = 'text/html'
+          response.body = [render_itinerary(itinerary, weather)]
         end
 
         private

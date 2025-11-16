@@ -25,7 +25,8 @@ module Mateoplanner
 
             if itinerary.nil?
               response.status = 404
-              response.body = "Itinerary not found"
+              response.headers['content-type'] = 'text/html'
+              response.body = ["<h1>Itinerary not found</h1>"]
               return
             end
 
@@ -34,8 +35,8 @@ module Mateoplanner
               parsed_content = JSON.parse(enhanced_content)
             rescue JSON::ParserError => e
               response.status = 422
-              response.format = :html
-              response.body = render_error("Invalid JSON: #{e.message}")
+              response.headers['content-type'] = 'text/html'
+              response.body = [render_error("Invalid JSON: #{e.message}")]
               return
             end
 
@@ -77,7 +78,8 @@ module Mateoplanner
 
             else
               response.status = 422
-              response.body = "Invalid action"
+              response.headers['content-type'] = 'text/html'
+              response.body = ["<h1>Invalid action</h1>"]
             end
           end
 

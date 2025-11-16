@@ -5,7 +5,7 @@ module Mateoplanner
         class New < Mateoplanner::Action
           def handle(_request, response)
             response.headers['content-type'] = 'text/html'
-            response.body = render_login_form
+            response.body = [render_login_form]
           end
 
           private

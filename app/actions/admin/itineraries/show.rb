@@ -18,12 +18,13 @@ module Mateoplanner
 
             if itinerary.nil?
               response.status = 404
-              response.body = "Itinerary not found"
+              response.headers['content-type'] = 'text/html'
+              response.body = ["<h1>Itinerary not found</h1>"]
               return
             end
 
-            response.format = :html
-            response.body = render_review(itinerary)
+            response.headers['content-type'] = 'text/html'
+            response.body = [render_review(itinerary)]
           end
 
           private

@@ -14,7 +14,8 @@ module Mateoplanner
 
             # Placeholder for future PATCH endpoint
             response.status = 501
-            response.body = "Not implemented"
+            response.headers['content-type'] = 'text/html'
+            response.body = ["<h1>Not implemented</h1>"]
           end
         end
       end
