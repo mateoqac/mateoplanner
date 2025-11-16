@@ -1,4 +1,4 @@
-require_relative "../../../../lib/mateoplanner/repositories/admin_repository"
+require_relative "../../../lib/mateoplanner/repositories/admin_repository"
 require "securerandom"
 
 module Mateoplanner
@@ -10,8 +10,15 @@ module Mateoplanner
             email = request.params[:email]
             password = request.params[:password]
 
+            puts "[DEBUG] Login attempt:"
+            puts "  Email param: #{email.inspect}"
+            puts "  Password param: #{password.inspect}"
+            puts "  All params: #{request.params.inspect}"
+
             repository = Repositories::AdminRepository.new
             admin = repository.authenticate(email, password)
+
+            puts "  Authentication result: #{admin ? 'SUCCESS' : 'FAILED'}"
 
             if admin
               # Set session cookie (simple implementation for MVP)
