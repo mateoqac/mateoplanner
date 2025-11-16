@@ -1,6 +1,6 @@
-require_relative "../../../lib/mateoplanner/repositories/itinerary_repository"
-require_relative "../../../lib/mateoplanner/events/event_bus"
-require_relative "../../../lib/mateoplanner/events/itinerary_requested"
+require_relative '../../../lib/mateoplanner/repositories/itinerary_repository'
+require_relative '../../../lib/mateoplanner/events/event_bus'
+require_relative '../../../lib/mateoplanner/events/itinerary_requested'
 
 module Mateoplanner
   module Actions
@@ -14,7 +14,7 @@ module Mateoplanner
 
           if errors.any?
             response.status = 422
-            response.format = :html
+            response.headers['content-type'] = 'text/html'
             response.body = render_errors(errors)
             return
           end
@@ -51,12 +51,12 @@ module Mateoplanner
 
         def validate_params(params)
           errors = []
-          errors << "Destination is required" if params[:destination].to_s.empty?
-          errors << "Start date is required" if params[:start_date].to_s.empty?
-          errors << "End date is required" if params[:end_date].to_s.empty?
-          errors << "Budget range is required" if params[:budget_range].to_s.empty?
-          errors << "Travel pace is required" if params[:travel_pace].to_s.empty?
-          errors << "Travel companions is required" if params[:travel_companions].to_s.empty?
+          errors << 'Destination is required' if params[:destination].to_s.empty?
+          errors << 'Start date is required' if params[:start_date].to_s.empty?
+          errors << 'End date is required' if params[:end_date].to_s.empty?
+          errors << 'Budget range is required' if params[:budget_range].to_s.empty?
+          errors << 'Travel pace is required' if params[:travel_pace].to_s.empty?
+          errors << 'Travel companions is required' if params[:travel_companions].to_s.empty?
           errors
         end
 

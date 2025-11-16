@@ -1,5 +1,5 @@
-require_relative "../../../lib/mateoplanner/repositories/itinerary_repository"
-require_relative "../../../lib/mateoplanner/services/weather_service"
+require_relative '../../../lib/mateoplanner/repositories/itinerary_repository'
+require_relative '../../../lib/mateoplanner/services/weather_service'
 
 module Mateoplanner
   module Actions
@@ -13,7 +13,7 @@ module Mateoplanner
 
           if itinerary.nil?
             response.status = 404
-            response.body = "Itinerary not found"
+            response.body = 'Itinerary not found'
             return
           end
 
@@ -31,27 +31,25 @@ module Mateoplanner
 
         def extract_city(destination)
           # Extract city name from "City, Country" format
-          destination.split(",").first.strip
+          destination.split(',').first.strip
         end
 
         def render_itinerary(itinerary, weather)
           # Determine which content to display
           content = if itinerary[:expert_enhanced_content]
-                     itinerary[:expert_enhanced_content]
-                   elsif itinerary[:ai_generated_content]
-                     itinerary[:ai_generated_content]
-                   else
-                     nil
-                   end
+                      itinerary[:expert_enhanced_content]
+                    elsif itinerary[:ai_generated_content]
+                      itinerary[:ai_generated_content]
+                    end
 
           status_message = case itinerary[:status]
-                          when "pending"
-                            "Your itinerary is being generated... This usually takes less than 60 seconds. Please refresh the page."
-                          when "in_review"
-                            "Your itinerary has been generated and is being reviewed by our travel expert."
-                          when "completed"
-                            "Your expert-enhanced itinerary is ready!"
-                          end
+                           when 'pending'
+                             'Your itinerary is being generated... This usually takes less than 60 seconds. Please refresh the page.'
+                           when 'in_review'
+                             'Your itinerary has been generated and is being reviewed by our travel expert.'
+                           when 'completed'
+                             'Your expert-enhanced itinerary is ready!'
+                           end
 
           # Render the template
           render_template(itinerary, content, weather, status_message)
@@ -93,7 +91,7 @@ module Mateoplanner
         end
 
         def auto_refresh_meta(status)
-          if status == "pending"
+          if status == 'pending'
             '<meta http-equiv="refresh" content="5">'
           else
             ''
@@ -101,7 +99,7 @@ module Mateoplanner
         end
 
         def format_date(date)
-          Date.parse(date.to_s).strftime("%B %d, %Y")
+          Date.parse(date.to_s).strftime('%B %d, %Y')
         end
 
         def render_weather_section(weather)
@@ -149,28 +147,28 @@ module Mateoplanner
           <<~HTML
             <section class="overview">
               <h2>Trip Overview</h2>
-              <p>#{content[:overview] || content["overview"]}</p>
-              <p class="budget-estimate"><strong>Estimated Total Cost:</strong> #{content[:total_estimated_cost] || content["total_estimated_cost"] || "TBD"}</p>
+              <p>#{content[:overview] || content['overview']}</p>
+              <p class="budget-estimate"><strong>Estimated Total Cost:</strong> #{content[:total_estimated_cost] || content['total_estimated_cost'] || 'TBD'}</p>
             </section>
 
             <section class="daily-itinerary">
               <h2>Daily Itinerary</h2>
-              #{render_days(content[:days] || content["days"])}
+              #{render_days(content[:days] || content['days'])}
             </section>
 
-            #{render_expert_notes(itinerary) if itinerary[:status] == "completed"}
+            #{render_expert_notes(itinerary) if itinerary[:status] == 'completed'}
           HTML
         end
 
         def render_days(days)
-          return "" unless days
+          return '' unless days
 
           days.map.with_index do |day, idx|
             <<~HTML
               <div class="day-card">
-                <h3>Day #{day[:day] || day["day"] || idx + 1} - #{format_date(day[:date] || day["date"])}</h3>
+                <h3>Day #{day[:day] || day['day'] || idx + 1} - #{format_date(day[:date] || day['date'])}</h3>
                 <div class="activities">
-                  #{render_activities(day[:activities] || day["activities"])}
+                  #{render_activities(day[:activities] || day['activities'])}
                 </div>
               </div>
             HTML
@@ -178,20 +176,20 @@ module Mateoplanner
         end
 
         def render_activities(activities)
-          return "" unless activities
+          return '' unless activities
 
           activities.map do |activity|
-            type_class = activity[:type] || activity["type"] || "activity"
+            type_class = activity[:type] || activity['type'] || 'activity'
             <<~HTML
               <div class="activity #{type_class}">
-                <div class="activity-time">#{activity[:time] || activity["time"]}</div>
+                <div class="activity-time">#{activity[:time] || activity['time']}</div>
                 <div class="activity-details">
-                  <h4>#{activity[:name] || activity["name"]}</h4>
-                  <p class="location">#{activity[:location] || activity["location"]}</p>
-                  <p class="description">#{activity[:description] || activity["description"]}</p>
+                  <h4>#{activity[:name] || activity['name']}</h4>
+                  <p class="location">#{activity[:location] || activity['location']}</p>
+                  <p class="description">#{activity[:description] || activity['description']}</p>
                   <div class="activity-meta">
-                    <span class="duration">Duration: #{activity[:duration] || activity["duration"]}</span>
-                    <span class="cost">Cost: #{activity[:cost] || activity["cost"]}</span>
+                    <span class="duration">Duration: #{activity[:duration] || activity['duration']}</span>
+                    <span class="cost">Cost: #{activity[:cost] || activity['cost']}</span>
                   </div>
                 </div>
               </div>

@@ -3,8 +3,8 @@ module Mateoplanner
     module Admin
       module Sessions
         class New < Mateoplanner::Action
-          def handle(request, response)
-            response.format = :html
+          def handle(_request, response)
+            response.headers['content-type'] = 'text/html'
             response.body = render_login_form
           end
 
