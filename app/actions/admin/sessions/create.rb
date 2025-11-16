@@ -7,13 +7,8 @@ module Mateoplanner
       module Sessions
         class Create < Mateoplanner::Action
           def handle(request, response)
-            email = request.params[:email]
-            password = request.params[:password]
-
-            puts "[DEBUG] Login attempt:"
-            puts "  Email param: #{email.inspect}"
-            puts "  Password param: #{password.inspect}"
-            puts "  All params: #{request.params.inspect}"
+            email = request.params["email"]
+            password = request.params["password"]
 
             repository = Repositories::AdminRepository.new
             admin = repository.authenticate(email, password)
