@@ -1,4 +1,4 @@
-require_relative "../../../../lib/mateoplanner/repositories/admin_repository"
+require_relative "../../../lib/mateoplanner/repositories/admin_repository"
 require "securerandom"
 
 module Mateoplanner
@@ -7,20 +7,21 @@ module Mateoplanner
       module Sessions
         class Create < Mateoplanner::Action
           def handle(request, response)
-            email = request.params[:email]
-            password = request.params[:password]
+            email = request.params["email"]
+            password = request.params["password"]
 
             repository = Repositories::AdminRepository.new
             admin = repository.authenticate(email, password)
 
+            puts "  Authentication result: #{admin ? 'SUCCESS' : 'FAILED'}"
+
             if admin
               # Set session cookie (simple implementation for MVP)
               token = SecureRandom.hex(32)
-              response.cookies["admin_session"] = {
-                value: token,
-                http_only: true,
-                expires: Time.now + 86400 # 24 hours
-              }
+
+              # Set cookie using Rack's set-cookie header
+              cookie_value = "admin_session=#{token}; Path=/; HttpOnly; Max-Age=86400"
+              response.headers["set-cookie"] = cookie_value
 
               # Store admin session (in production, use Redis or similar)
               $admin_sessions ||= {}
