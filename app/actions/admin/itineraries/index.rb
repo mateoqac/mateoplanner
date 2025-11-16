@@ -15,8 +15,8 @@ module Mateoplanner
             repository = Repositories::ItineraryRepository.new
             itineraries = repository.all
 
-            response.format = :html
-            response.body = render_index(itineraries)
+            response.headers['content-type'] = 'text/html'
+            response.body = [render_index(itineraries)]
           end
 
           private

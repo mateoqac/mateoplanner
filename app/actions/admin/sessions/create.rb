@@ -29,8 +29,8 @@ module Mateoplanner
               response.redirect_to "/admin/itineraries"
             else
               response.status = 401
-              response.format = :html
-              response.body = render_error
+              response.headers['content-type'] = 'text/html'
+              response.body = [render_error]
             end
           end
 

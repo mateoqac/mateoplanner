@@ -15,7 +15,7 @@ module Mateoplanner
           if errors.any?
             response.status = 422
             response.headers['content-type'] = 'text/html'
-            response.body = render_errors(errors)
+            response.body = [render_errors(errors)]
             return
           end
 
