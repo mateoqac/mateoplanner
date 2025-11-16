@@ -1,0 +1,499 @@
+/* Reset and base styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  line-height: 1.6;
+  color: #333;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  min-height: 100vh;
+  padding: 20px;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+  overflow: hidden;
+}
+
+/* Header styles */
+header {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  padding: 40px;
+  text-align: center;
+}
+
+.hero h1 {
+  font-size: 3rem;
+  margin-bottom: 10px;
+  font-weight: 700;
+}
+
+.tagline {
+  font-size: 1.2rem;
+  opacity: 0.95;
+}
+
+header h1 {
+  font-size: 2.5rem;
+  margin-bottom: 10px;
+}
+
+header p {
+  font-size: 1.1rem;
+  opacity: 0.95;
+}
+
+/* Main content */
+main {
+  padding: 40px;
+}
+
+/* Home page styles */
+.intro {
+  margin-bottom: 40px;
+}
+
+.intro h2 {
+  font-size: 2rem;
+  margin-bottom: 30px;
+  text-align: center;
+  color: #667eea;
+}
+
+.steps {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 30px;
+  margin-bottom: 40px;
+}
+
+.step {
+  text-align: center;
+  padding: 20px;
+}
+
+.step-number {
+  width: 60px;
+  height: 60px;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin: 0 auto 20px;
+}
+
+.step h3 {
+  font-size: 1.3rem;
+  margin-bottom: 10px;
+  color: #333;
+}
+
+.step p {
+  color: #666;
+}
+
+.cta {
+  text-align: center;
+  padding: 40px 0;
+}
+
+/* Button styles */
+.btn {
+  display: inline-block;
+  padding: 15px 40px;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 1.1rem;
+  transition: all 0.3s ease;
+  border: none;
+  cursor: pointer;
+}
+
+.btn-primary {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+}
+
+.btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 5px 20px rgba(102, 126, 234, 0.4);
+}
+
+/* Form styles */
+.questionnaire-form {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.form-section {
+  margin-bottom: 40px;
+  padding: 30px;
+  background: #f8f9fa;
+  border-radius: 8px;
+}
+
+.form-section h2 {
+  font-size: 1.5rem;
+  margin-bottom: 20px;
+  color: #667eea;
+}
+
+.form-group {
+  margin-bottom: 20px;
+}
+
+.form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+}
+
+label {
+  display: block;
+  margin-bottom: 8px;
+  font-weight: 600;
+  color: #333;
+}
+
+input[type="text"],
+input[type="date"],
+select,
+textarea {
+  width: 100%;
+  padding: 12px;
+  border: 2px solid #ddd;
+  border-radius: 6px;
+  font-size: 1rem;
+  transition: border-color 0.3s ease;
+}
+
+input:focus,
+select:focus,
+textarea:focus {
+  outline: none;
+  border-color: #667eea;
+}
+
+.checkbox-group {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 10px;
+}
+
+.checkbox-group label {
+  display: flex;
+  align-items: center;
+  font-weight: normal;
+}
+
+.checkbox-group input[type="checkbox"] {
+  width: auto;
+  margin-right: 8px;
+}
+
+.form-actions {
+  text-align: center;
+  padding: 20px 0;
+}
+
+/* Itinerary page styles */
+.itinerary-page {
+  max-width: 1000px;
+}
+
+.itinerary-header {
+  padding: 30px 40px;
+}
+
+.trip-dates {
+  font-size: 1.2rem;
+  opacity: 0.9;
+}
+
+.status-message {
+  margin-top: 15px;
+  padding: 12px 20px;
+  border-radius: 6px;
+  font-weight: 600;
+}
+
+.status-message.pending {
+  background: #fff3cd;
+  color: #856404;
+}
+
+.status-message.in_review {
+  background: #d1ecf1;
+  color: #0c5460;
+}
+
+.status-message.completed {
+  background: #d4edda;
+  color: #155724;
+}
+
+/* Weather section */
+.weather-section {
+  padding: 30px 40px;
+  background: #f8f9fa;
+  border-bottom: 1px solid #dee2e6;
+}
+
+.weather-section h2 {
+  font-size: 1.5rem;
+  margin-bottom: 20px;
+  color: #667eea;
+}
+
+.weather-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 15px;
+}
+
+.weather-day {
+  background: white;
+  padding: 15px;
+  border-radius: 8px;
+  text-align: center;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.weather-day .date {
+  font-weight: 600;
+  margin-bottom: 8px;
+  color: #333;
+  font-size: 0.9rem;
+}
+
+.weather-day .condition {
+  font-size: 1.1rem;
+  margin-bottom: 5px;
+  color: #667eea;
+}
+
+.weather-day .temp {
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: #333;
+}
+
+.weather-day .description {
+  font-size: 0.85rem;
+  color: #666;
+  margin-top: 5px;
+}
+
+/* Itinerary content */
+.itinerary-content {
+  padding: 40px;
+}
+
+.overview {
+  margin-bottom: 40px;
+  padding: 20px;
+  background: #f8f9fa;
+  border-left: 4px solid #667eea;
+  border-radius: 4px;
+}
+
+.overview h2 {
+  color: #667eea;
+  margin-bottom: 15px;
+}
+
+.budget-estimate {
+  margin-top: 15px;
+  font-size: 1.1rem;
+}
+
+.daily-itinerary {
+  margin-bottom: 40px;
+}
+
+.daily-itinerary > h2 {
+  font-size: 2rem;
+  margin-bottom: 30px;
+  color: #667eea;
+}
+
+.day-card {
+  margin-bottom: 30px;
+  background: #f8f9fa;
+  border-radius: 8px;
+  padding: 25px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+.day-card h3 {
+  font-size: 1.5rem;
+  margin-bottom: 20px;
+  color: #333;
+  padding-bottom: 10px;
+  border-bottom: 2px solid #667eea;
+}
+
+.activities {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.activity {
+  display: flex;
+  gap: 20px;
+  padding: 15px;
+  background: white;
+  border-radius: 6px;
+  border-left: 4px solid #667eea;
+}
+
+.activity.breakfast,
+.activity.lunch,
+.activity.dinner {
+  border-left-color: #28a745;
+}
+
+.activity-time {
+  flex-shrink: 0;
+  font-weight: 600;
+  color: #667eea;
+  min-width: 80px;
+}
+
+.activity-details {
+  flex-grow: 1;
+}
+
+.activity-details h4 {
+  font-size: 1.2rem;
+  margin-bottom: 5px;
+  color: #333;
+}
+
+.activity-details .location {
+  font-size: 0.9rem;
+  color: #666;
+  margin-bottom: 10px;
+}
+
+.activity-details .description {
+  margin-bottom: 10px;
+  line-height: 1.5;
+}
+
+.activity-meta {
+  display: flex;
+  gap: 20px;
+  font-size: 0.9rem;
+  color: #666;
+}
+
+.activity-meta span {
+  display: inline-flex;
+  align-items: center;
+}
+
+/* Expert notes */
+.expert-notes {
+  padding: 25px;
+  background: linear-gradient(135deg, #667eea11 0%, #764ba211 100%);
+  border-radius: 8px;
+  border: 2px solid #667eea;
+}
+
+.expert-notes h2 {
+  color: #667eea;
+  margin-bottom: 15px;
+}
+
+.enhanced-badge {
+  font-weight: 600;
+  color: #155724;
+  margin-bottom: 10px;
+}
+
+.completion-date {
+  color: #666;
+  font-size: 0.9rem;
+}
+
+/* Loading state */
+.loading {
+  text-align: center;
+  padding: 60px 20px;
+  color: #666;
+}
+
+.loading p {
+  font-size: 1.2rem;
+  margin: 10px 0;
+}
+
+/* Footer */
+footer {
+  background: #f8f9fa;
+  padding: 20px;
+  text-align: center;
+  color: #666;
+  border-top: 1px solid #dee2e6;
+}
+
+footer a {
+  color: #667eea;
+  text-decoration: none;
+}
+
+footer a:hover {
+  text-decoration: underline;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+  .hero h1 {
+    font-size: 2rem;
+  }
+
+  .steps {
+    grid-template-columns: 1fr;
+  }
+
+  .form-row {
+    grid-template-columns: 1fr;
+  }
+
+  .checkbox-group {
+    grid-template-columns: 1fr;
+  }
+
+  .weather-grid {
+    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+  }
+
+  .activity {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  main {
+    padding: 20px;
+  }
+
+  .itinerary-content {
+    padding: 20px;
+  }
+}

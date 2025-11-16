@@ -1,0 +1,48 @@
+@media print {
+  body {
+    background: white;
+    padding: 0;
+  }
+
+  .container {
+    box-shadow: none;
+    max-width: 100%;
+  }
+
+  header {
+    background: white !important;
+    color: #333 !important;
+    border-bottom: 2px solid #333;
+  }
+
+  .status-message {
+    display: none;
+  }
+
+  .weather-section {
+    page-break-inside: avoid;
+  }
+
+  .day-card {
+    page-break-inside: avoid;
+    border: 1px solid #ddd;
+  }
+
+  .activity {
+    page-break-inside: avoid;
+  }
+
+  footer a {
+    color: #333;
+    text-decoration: none;
+  }
+
+  footer a:after {
+    content: " (" attr(href) ")";
+  }
+
+  /* Hide non-essential elements */
+  .loading {
+    display: none;
+  }
+}

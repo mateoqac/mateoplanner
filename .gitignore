@@ -1,0 +1,9 @@
+.env
+db/*.db
+db/*.sqlite3
+log/*
+tmp/*
+.bundle/
+vendor/bundle/
+*.gem
+*.rbc

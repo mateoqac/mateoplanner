@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title><%= title %></title>
+  <link rel="stylesheet" href="/assets/styles.css">
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1>Plan Your European Adventure</h1>
+      <p>Share your preferences and we'll create a personalized itinerary for you</p>
+    </header>
+
+    <main>
+      <form action="/questionnaire" method="POST" class="questionnaire-form">
+        <section class="form-section">
+          <h2>Trip Details</h2>
+
+          <div class="form-group">
+            <label for="destination">Destination (Country/City in Europe) *</label>
+            <input type="text" id="destination" name="destination" required
+                   placeholder="e.g., Paris, France or Barcelona, Spain">
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label for="start_date">Start Date *</label>
+              <input type="date" id="start_date" name="start_date" required>
+            </div>
+            <div class="form-group">
+              <label for="end_date">End Date *</label>
+              <input type="date" id="end_date" name="end_date" required>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="budget_range">Budget Range *</label>
+            <select id="budget_range" name="budget_range" required>
+              <option value="">Select your budget</option>
+              <option value="economy">Economy (€50-100/day)</option>
+              <option value="moderate">Moderate (€100-200/day)</option>
+              <option value="luxury">Luxury (€200+/day)</option>
+            </select>
+          </div>
+        </section>
+
+        <section class="form-section">
+          <h2>Travel Preferences</h2>
+
+          <div class="form-group">
+            <label for="travel_pace">Travel Pace *</label>
+            <select id="travel_pace" name="travel_pace" required>
+              <option value="">Select your pace</option>
+              <option value="relaxed">Relaxed - 1-2 activities per day</option>
+              <option value="moderate">Moderate - 2-3 activities per day</option>
+              <option value="packed">Packed - 3-4 activities per day</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label>Interests (select all that apply)</label>
+            <div class="checkbox-group">
+              <label><input type="checkbox" name="interests[]" value="culture"> Culture & Museums</label>
+              <label><input type="checkbox" name="interests[]" value="food"> Food & Dining</label>
+              <label><input type="checkbox" name="interests[]" value="nature"> Nature & Outdoors</label>
+              <label><input type="checkbox" name="interests[]" value="nightlife"> Nightlife</label>
+              <label><input type="checkbox" name="interests[]" value="history"> History</label>
+              <label><input type="checkbox" name="interests[]" value="adventure"> Adventure</label>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="accommodation_preference">Accommodation Preference</label>
+            <select id="accommodation_preference" name="accommodation_preference">
+              <option value="">No preference</option>
+              <option value="hostel">Hostel</option>
+              <option value="hotel">Hotel</option>
+              <option value="boutique">Boutique Hotel</option>
+              <option value="apartment">Apartment/Airbnb</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label for="travel_companions">Traveling with *</label>
+            <select id="travel_companions" name="travel_companions" required>
+              <option value="">Select</option>
+              <option value="solo">Solo</option>
+              <option value="couple">Couple</option>
+              <option value="family">Family</option>
+              <option value="friends">Friends</option>
+            </select>
+          </div>
+        </section>
+
+        <section class="form-section">
+          <h2>Additional Information</h2>
+
+          <div class="form-group">
+            <label for="dietary_restrictions">Dietary Restrictions/Preferences</label>
+            <input type="text" id="dietary_restrictions" name="dietary_restrictions"
+                   placeholder="e.g., Vegetarian, Gluten-free, Vegan">
+          </div>
+
+          <div class="form-group">
+            <label for="special_requirements">Special Requirements</label>
+            <textarea id="special_requirements" name="special_requirements" rows="3"
+                      placeholder="e.g., Accessibility needs, allergies, specific requests"></textarea>
+          </div>
+        </section>
+
+        <div class="form-actions">
+          <button type="submit" class="btn btn-primary">Create My Itinerary</button>
+        </div>
+      </form>
+    </main>
+
+    <footer>
+      <p>&copy; 2025 MateoPlanner</p>
+    </footer>
+  </div>
+</body>
+</html>
