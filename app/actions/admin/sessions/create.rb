@@ -18,11 +18,10 @@ module Mateoplanner
             if admin
               # Set session cookie (simple implementation for MVP)
               token = SecureRandom.hex(32)
-              response.cookies["admin_session"] = {
-                value: token,
-                http_only: true,
-                expires: Time.now + 86400 # 24 hours
-              }
+
+              # Set cookie using Rack's set-cookie header
+              cookie_value = "admin_session=#{token}; Path=/; HttpOnly; Max-Age=86400"
+              response.headers["set-cookie"] = cookie_value
 
               # Store admin session (in production, use Redis or similar)
               $admin_sessions ||= {}

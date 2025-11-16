@@ -4,18 +4,20 @@ module Mateoplanner
       module Sessions
         class Destroy < Mateoplanner::Action
           def handle(request, response)
-            token = request.cookies["admin_session"]
-
-            if token
-              $admin_sessions ||= {}
-              $admin_sessions.delete(token)
+            # Get cookie from request
+            cookie_header = request.env["HTTP_COOKIE"]
+            if cookie_header
+              cookies = cookie_header.split(';').map(&:strip)
+              admin_cookie = cookies.find { |c| c.start_with?("admin_session=") }
+              if admin_cookie
+                token = admin_cookie.split('=', 2)[1]
+                $admin_sessions ||= {}
+                $admin_sessions.delete(token)
+              end
             end
 
-            response.cookies["admin_session"] = {
-              value: "",
-              expires: Time.now - 86400
-            }
-
+            # Clear the cookie
+            response.headers["set-cookie"] = "admin_session=; Path=/; Max-Age=0"
             response.redirect_to "/"
           end
         end
